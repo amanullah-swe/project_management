@@ -158,7 +158,8 @@ app.post("/api/events", verifyToken, async (req, res) => {
       registrationForm: registrationFields,
     });
     await event.save();
-    const registrationLink = "http://localhost:3000/register/" + event._id;
+    const registrationLink =
+      "https://project-management-xc3y.vercel.app/register/" + event._id;
     res.status(201).json({ ...event, registrationLink });
   } catch (error) {
     console.log(error);
