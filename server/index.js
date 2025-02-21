@@ -34,7 +34,7 @@ const verifyToken = (req, res, next) => {
 // Middleware
 app.use(
   cors({
-    origin: [process.env.FRONTEND_ROUT1, process.env.FRONTEND_ROUT1],
+    origin: [process.env.FRONTEND_ROUT1, process.env.FRONTEND_ROUT2],
     credentials: true,
   })
 );
@@ -96,7 +96,7 @@ app.post("/api/login", async (req, res) => {
 
     res.json({ token, user });
   } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error", error: err });
   }
 });
 
