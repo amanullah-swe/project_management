@@ -32,7 +32,12 @@ const verifyToken = (req, res, next) => {
   }
 };
 // Middleware
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(
+  cors({
+    origin: [process.env.FRONTEND_ROUT1, process.env.FRONTEND_ROUT1],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(morgan("dev"));
 
@@ -45,6 +50,10 @@ mongoose
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
+// for testing purpose
+app.get("/", (req, res) => {
+  res.json({ message: "hello it's working" });
+});
 // Registration Route
 app.post("/api/register", async (req, res) => {
   try {

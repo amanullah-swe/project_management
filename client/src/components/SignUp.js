@@ -1,6 +1,7 @@
 // src/pages/SignUp.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URL } from "../constant";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/register", {
+      const response = await fetch(BACKEND_URL + "register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

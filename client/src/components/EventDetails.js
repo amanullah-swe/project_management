@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext"; // Adjust import path as necessary
-
+import { BACKEND_URL } from "../constant";
 const EventDetails = () => {
   const { id } = useParams(); // Get event ID from URL parameters
   const { token } = useAuth(); // Get token from AuthContext
@@ -16,7 +16,7 @@ const EventDetails = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await fetch(`/api/events/${id}`, {
+        const response = await fetch(`${BACKEND_URL}events/${id}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
@@ -43,7 +43,7 @@ const EventDetails = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`/api/events/${id}`, {
+      const response = await fetch(`${BACKEND_URL}events/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`, // Include token in headers
@@ -63,7 +63,7 @@ const EventDetails = () => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch(`/api/events/${id}`, {
+      const response = await fetch(`${BACKEND_URL}events/${id}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`, // Include token in headers

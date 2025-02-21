@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { BACKEND_URL } from "../constant";
 
 const RegistrationForm = () => {
   const { eventId } = useParams();
@@ -15,7 +16,7 @@ const RegistrationForm = () => {
     const fetchEventDetails = async () => {
       try {
         console.log("fetching the event details of the event :", eventId);
-        const response = await fetch(`/api/events/${eventId}`);
+        const response = await fetch(`${BACKEND_URL}events/${eventId}`);
         if (!response.ok) {
           throw new Error("Failed to fetch event details");
         }
@@ -47,7 +48,7 @@ const RegistrationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`/api/events/register/${eventId}`, {
+      const response = await fetch(`${BACKEND_URL}events/register/${eventId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

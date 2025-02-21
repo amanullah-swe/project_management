@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom"; // Import Link for navigation
 import { useAuth } from "../context/AuthContext"; // Adjust import path as necessary
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URL } from "../constant";
 
 const EventList = () => {
   const navigate = useNavigate(); // Get navigation object for navigation
@@ -13,7 +14,7 @@ const EventList = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("/api/events", {
+        const response = await fetch(BACKEND_URL + "events", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URL } from "../constant";
 
 const UserProfile = () => {
   const { token } = useAuth(); // Get token from AuthContext
@@ -20,7 +21,7 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get("/api/profile", {
+        const response = await axios.get(BACKEND_URL + "profile", {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers
           },
@@ -54,7 +55,7 @@ const UserProfile = () => {
 
   const handleSave = async () => {
     try {
-      await axios.put("/api/profile", formData, {
+      await axios.put(BACKEND_URL + "profile", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",

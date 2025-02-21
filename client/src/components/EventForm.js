@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext"; // Adjust import path as necessary
 import { ClipboardCopyIcon } from "@heroicons/react/outline"; // Ensure you have @heroicons/react installed
+import { BACKEND_URL } from "../constant";
 
 const EventForm = () => {
   const { token } = useAuth(); // Get token from AuthContext
@@ -54,7 +55,7 @@ const EventForm = () => {
     console.log("Sending event data:", eventData);
 
     try {
-      const response = await fetch("/api/events", {
+      const response = await fetch(BACKEND_URL + "events", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-
+import { BACKEND_URL } from "../constant";
 const CalendarView = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,7 +14,7 @@ const CalendarView = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("/api/events", {
+        const response = await fetch(BACKEND_URL + "events", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`, // Include token in headers

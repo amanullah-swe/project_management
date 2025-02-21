@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import { BACKEND_URL } from "../constant";
 
 const Login = () => {
   const { login } = useAuth();
@@ -12,7 +13,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/api/login", {
+      const response = await axios.post(BACKEND_URL + "login", {
         email,
         password,
       });
