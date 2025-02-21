@@ -70,8 +70,8 @@ const Home = () => {
                 Welcome {user ? user.name : "User"}!
               </h1>
               <p className="text-lg mb-4">
-                Welcome to the Event Planner app, created by Ravi Buraga. Manage
-                your events efficiently with ease.
+                Welcome to the Event Planner app, Manage your events efficiently
+                with ease.
               </p>
               <button
                 onClick={toggleEventForm}
