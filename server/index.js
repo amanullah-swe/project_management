@@ -159,7 +159,7 @@ app.post("/api/events", verifyToken, async (req, res) => {
     });
     await event.save();
     const registrationLink =
-      "https://project-management-xc3y.vercel.app/register/" + event._id;
+      process.env.FRONTEND_REDIRECT_URL + "/register/" + event._id;
     res.status(201).json({ ...event, registrationLink });
   } catch (error) {
     console.log(error);
